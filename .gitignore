@@ -1,0 +1,7 @@
+/target
+/target_alt
+**/*.rs.bk
+Cargo.lock
+.DS_Store
+*.json
+!test_vectors/**/*.json
