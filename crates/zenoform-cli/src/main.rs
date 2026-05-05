@@ -1,12 +1,13 @@
 use clap::{Parser, Subcommand};
+use std::fs;
+use std::time::Instant;
 use zenoform_core::{
-    Chunk, ChunkCoord, ChunkSize, 
+    Chunk, ChunkCoord, ChunkSize,
+    commitment::calculate_poseidon_commitment,
     module::generate_terrain_v1,
     proof::{ProofPackage, PublicInputs},
-    commitment::calculate_poseidon_commitment,
 };
 use zenoform_verifier::verify_chunk;
-use std::fs;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -57,6 +58,17 @@ enum Commands {
         #[arg(long)]
         out: String,
     },
+    /// Benchmark generation for various chunk sizes
+    Bench {
+        #[arg(long)]
+        seed: i32,
+        #[arg(long)]
+        module: String,
+        #[arg(long, default_value = "16x16,32x32,64x64")]
+        sizes: String,
+        #[arg(long, default_value = "10")]
+        runs: u32,
+    },
     /// Compile a Zenoform DSL (.zf) file to various targets
     Compile {
         #[arg(long)]
@@ -68,21 +80,46 @@ enum Commands {
     },
 }
 
+fn parse_chunk_coord(s: &str) -> Result<ChunkCoord, String> {
+    let parts: Vec<&str> = s.split(',').collect();
+    if parts.len() != 3 {
+        return Err(format!("Expected 'x,y,z', got '{}'", s));
+    }
+    let x = parts[0].parse::<i32>().map_err(|e| format!("Invalid x: {}", e))?;
+    let y = parts[1].parse::<i32>().map_err(|e| format!("Invalid y: {}", e))?;
+    let z = parts[2].parse::<i32>().map_err(|e| format!("Invalid z: {}", e))?;
+    Ok(ChunkCoord::new(x, y, z))
+}
+
+fn parse_chunk_size(s: &str) -> Result<ChunkSize, String> {
+    let parts: Vec<&str> = s.split('x').collect();
+    if parts.len() != 2 {
+        return Err(format!("Expected 'WxH', got '{}'", s));
+    }
+    let w = parts[0].parse::<u32>().map_err(|e| format!("Invalid width: {}", e))?;
+    let h = parts[1].parse::<u32>().map_err(|e| format!("Invalid height: {}", e))?;
+    Ok(ChunkSize::new(w, h))
+}
+
 fn main() {
     let cli = Cli::parse();
 
     match &cli.command {
-        Commands::Generate { seed, world, module: _, chunk, size, out } => {
-            let coords: Vec<i32> = chunk.split(',').map(|s| s.parse().unwrap()).collect();
-            let coord = ChunkCoord::new(coords[0], coords[1], coords[2]);
+        Commands::Generate { seed, world, module, chunk, size, out } => {
+            let coord = parse_chunk_coord(chunk).unwrap_or_else(|e| {
+                eprintln!("Error parsing chunk coordinate: {}", e);
+                std::process::exit(1);
+            });
+            let size_struct = parse_chunk_size(size).unwrap_or_else(|e| {
+                eprintln!("Error parsing chunk size: {}", e);
+                std::process::exit(1);
+            });
 
-            let sizes: Vec<u32> = size.split('x').map(|s| s.parse().unwrap()).collect();
-            let size_struct = ChunkSize::new(sizes[0], sizes[1]);
+            if module != "terrain.fixed_noise.v1" {
+                eprintln!("Warning: Unknown module '{}', using terrain.fixed_noise.v1", module);
+            }
 
-            let mut chunk_data = generate_terrain_v1(world.clone(), *seed, coord, size_struct);
-            
-            // Overwrite commitment with Poseidon for proof-friendliness
-            chunk_data.commitment = calculate_poseidon_commitment(&chunk_data);
+            let chunk_data = generate_terrain_v1(world.clone(), *seed, coord, size_struct);
 
             let json = serde_json::to_string_pretty(&chunk_data).unwrap();
             fs::write(out, json).expect("Unable to write file");
@@ -132,9 +169,9 @@ fn main() {
             let chunk_json = fs::read_to_string(chunk).expect("Unable to read chunk file");
             let mut chunk_data: Chunk = serde_json::from_str(&chunk_json).expect("Invalid chunk JSON");
 
-            if index < chunk_data.cells.len() {
-                println!("Tampering with cell {} (height {} -> {})", index, chunk_data.cells[index].height, height);
-                chunk_data.cells[index].height = *height;
+            if *index < chunk_data.cells.len() {
+                println!("Tampering with cell {} (height {} -> {})", index, chunk_data.cells[*index].height, height);
+                chunk_data.cells[*index].height = *height;
             } else {
                 eprintln!("Index out of bounds");
                 std::process::exit(1);
@@ -144,11 +181,46 @@ fn main() {
             fs::write(out, json).expect("Unable to write file");
             println!("Tampered chunk saved to {}", out);
         }
+        Commands::Bench { seed, module, sizes, runs } => {
+            if module != "terrain.fixed_noise.v1" {
+                eprintln!("Warning: Unknown module '{}', using terrain.fixed_noise.v1", module);
+            }
+
+            let size_list: Vec<&str> = sizes.split(',').collect();
+
+            println!("{:<12} {:<8} {:<18} {:<18}", "Size", "Cells", "Avg Gen (ms)", "Commitment (ms)");
+            println!("{}", "-".repeat(60));
+
+            for size_str in size_list {
+                let size = parse_chunk_size(size_str).unwrap_or_else(|e| {
+                    eprintln!("Error parsing size '{}': {}", size_str, e);
+                    std::process::exit(1);
+                });
+
+                let mut total_gen = std::time::Duration::ZERO;
+                let mut total_commit = std::time::Duration::ZERO;
+
+                for _ in 0..*runs {
+                    let gen_start = Instant::now();
+                    let mut chunk = generate_terrain_v1("bench".to_string(), *seed, ChunkCoord::new(0, 0, 0), size);
+                    total_gen += gen_start.elapsed();
+
+                    let commit_start = Instant::now();
+                    chunk.commitment = calculate_poseidon_commitment(&chunk);
+                    total_commit += commit_start.elapsed();
+                }
+
+                let avg_gen = total_gen.as_secs_f64() * 1000.0 / *runs as f64;
+                let avg_commit = total_commit.as_secs_f64() * 1000.0 / *runs as f64;
+
+                println!("{:<12} {:<8} {:<18.4} {:<18.4}", size_str, size.total_cells(), avg_gen, avg_commit);
+            }
+        }
         Commands::Compile { file, targets, out_dir } => {
             let source = fs::read_to_string(file).expect("Unable to read DSL file");
             let target_list: Vec<&str> = targets.split(',').collect();
 
-            if !fs::metadata(out_dir).is_ok() {
+            if fs::metadata(out_dir).is_err() {
                 fs::create_dir_all(out_dir).expect("Unable to create output directory");
             }
 

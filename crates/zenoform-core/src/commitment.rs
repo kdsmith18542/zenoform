@@ -3,7 +3,7 @@ use blake3::Hasher;
 
 pub fn calculate_chunk_commitment(chunk: &Chunk) -> String {
     let mut hasher = Hasher::new();
-    
+
     // Add header info
     hasher.update(chunk.protocol_version.as_bytes());
     hasher.update(chunk.world_id.as_bytes());
@@ -29,20 +29,25 @@ pub fn calculate_chunk_commitment(chunk: &Chunk) -> String {
 }
 
 pub fn calculate_poseidon_commitment(chunk: &crate::chunk::Chunk) -> String {
-    use starknet_crypto::{poseidon_hash_many, FieldElement};
+    use starknet_crypto::{Felt, poseidon_hash_many};
 
     let mut data = Vec::new();
-    
-    // Parse seed hash as FieldElement
-    let seed_fe = FieldElement::from_hex_be(&chunk.seed_hash).unwrap_or(FieldElement::ZERO);
+
+    // Parse seed hash as Felt
+    let seed_fe = Felt::from_hex(&chunk.seed_hash).unwrap_or(Felt::ZERO);
     data.push(seed_fe);
-    data.push(FieldElement::from(chunk.chunk_coord.x as u64)); // Note: handle negative coord properly if needed
-    data.push(FieldElement::from(chunk.chunk_coord.y as u64));
-    data.push(FieldElement::from(chunk.chunk_size.width as u64));
-    data.push(FieldElement::from(chunk.chunk_size.height as u64));
+    data.push(Felt::from(chunk.chunk_coord.x as u64));
+    data.push(Felt::from(chunk.chunk_coord.y as u64));
+    data.push(Felt::from(chunk.chunk_size.width as u64));
+    data.push(Felt::from(chunk.chunk_size.height as u64));
+    // Note: negative coordinates are cast to u64 for Poseidon; the verifier must match this behavior.
 
     for cell in &chunk.cells {
-        data.push(FieldElement::from(cell.height as u64));
+        data.push(Felt::from(cell.height as u64));
+        data.push(Felt::from(cell.temperature as u64));
+        data.push(Felt::from(cell.moisture as u64));
+        data.push(Felt::from(cell.biome_id as u64));
+        data.push(Felt::from(cell.resource_mask as u64));
     }
 
     let hash = poseidon_hash_many(&data);

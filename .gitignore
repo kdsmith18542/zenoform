@@ -1,7 +1,9 @@
 /target
 /target_alt
+/cairo/terrain_v1/target
 **/*.rs.bk
 Cargo.lock
 .DS_Store
 *.json
 !test_vectors/**/*.json
+plan.md

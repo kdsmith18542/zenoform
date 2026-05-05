@@ -1,10 +1,13 @@
 [package]
 name = "zenoform_terrain_v1"
 version = "0.1.0"
-edition = "2024.1"
+edition = "2024_07"
 
 [dependencies]
 starknet = "2.8.2"
+
+[dev-dependencies]
+cairo_test = "2.18.0"
 
 [[target.starknet-contract]]
 sierra = true

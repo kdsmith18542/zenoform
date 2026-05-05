@@ -1,7 +1,7 @@
 WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
 COMMENT = _{ "//" ~ (!"\n" ~ ANY)* }
 
-program = { SOI ~ module_def ~ EOI }
+program = { module_def }
 
 module_def = { "module" ~ identifier ~ "{" ~ input_block ~ cell_block ~ output_block ~ "}" }
 
@@ -19,5 +19,5 @@ function_call = { identifier ~ "(" ~ (expression ~ ("," ~ expression)*)? ~ ")" }
 
 operation = { "+" | "-" | "*" | "/" }
 type_name = { "i32" | "u16" | "u32" | "u8" | "Fixed" | "Field" }
-identifier = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+identifier = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_" | ".")* }
 number = @{ ASCII_DIGIT+ }

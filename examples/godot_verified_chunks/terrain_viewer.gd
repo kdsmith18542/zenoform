@@ -65,9 +65,20 @@ func create_chunk_mesh(data):
     add_child(mesh_instance)
 
 func update_status_visual(is_valid):
+    var status_overlay = ColorRect.new()
+    status_overlay.size = Vector2(200, 40)
+    status_overlay.position = Vector2(10, 10)
+    add_child(status_overlay)
+    
+    var label = Label.new()
+    label.position = Vector2(10, 10)
+    add_child(label)
+    
     if is_valid:
+        label.text = "VERIFIED"
+        status_overlay.color = Color(0, 0.8, 0, 0.7)
         print("Protocol Verified: Chunk matches commitment.")
-        # TODO: Set color to Green
     else:
+        label.text = "FAILED"
+        status_overlay.color = Color(0.8, 0, 0, 0.7)
         print("Protocol Failure: Chunk data mismatch.")
-        # TODO: Set color to Red

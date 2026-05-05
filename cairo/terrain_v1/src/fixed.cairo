@@ -1,20 +1,21 @@
 #[derive(Copy, Drop, Serde, PartialEq)]
-struct Fixed {
-    mag: i128
+pub struct Fixed {
+    pub mag: i128
 }
 
-const FRACTIONAL_BITS: u8 = 16;
-const ONE: i128 = 65536; // 1 << 16
+pub const FRACTIONAL_BITS: u8 = 16;
+pub const ONE: i128 = 65536; // 1 << 16
 
-trait FixedTrait {
+pub trait FixedTrait {
     fn from_i128(val: i128) -> Fixed;
     fn to_i128(self: Fixed) -> i128;
     fn add(self: Fixed, other: Fixed) -> Fixed;
     fn sub(self: Fixed, other: Fixed) -> Fixed;
     fn mul(self: Fixed, other: Fixed) -> Fixed;
+    fn div(self: Fixed, other: @Fixed) -> Fixed;
 }
 
-impl FixedImpl of FixedTrait {
+pub impl FixedImpl of FixedTrait {
     fn from_i128(val: i128) -> Fixed {
         Fixed { mag: val * ONE }
     }
@@ -33,5 +34,9 @@ impl FixedImpl of FixedTrait {
 
     fn mul(self: Fixed, other: Fixed) -> Fixed {
         Fixed { mag: (self.mag * other.mag) / ONE }
+    }
+
+    fn div(self: Fixed, other: @Fixed) -> Fixed {
+        Fixed { mag: (self.mag * ONE) / (*other).mag }
     }
 }

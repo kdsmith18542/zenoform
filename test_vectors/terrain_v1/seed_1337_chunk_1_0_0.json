@@ -1,0 +1,2324 @@
+{
+  "schema_version": "zenoform.chunk.v1",
+  "protocol_version": "zenoform-terrain-v1",
+  "world_id": "test-world",
+  "seed_hash": "539",
+  "chunk_coord": {
+    "x": 1,
+    "y": 0,
+    "z": 0
+  },
+  "chunk_size": {
+    "width": 16,
+    "height": 16
+  },
+  "module_id": "terrain.fixed_noise.v1",
+  "module_hash": "0x-module-hash-placeholder",
+  "cells": [
+    {
+      "local_x": 0,
+      "local_y": 0,
+      "height": 47648,
+      "temperature": 21001,
+      "moisture": 41565,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 0,
+      "height": 47550,
+      "temperature": 18163,
+      "moisture": 40570,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 0,
+      "height": 40887,
+      "temperature": 15325,
+      "moisture": 39576,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 0,
+      "height": 36612,
+      "temperature": 17312,
+      "moisture": 38450,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 0,
+      "height": 31903,
+      "temperature": 19300,
+      "moisture": 37325,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 0,
+      "height": 35531,
+      "temperature": 15932,
+      "moisture": 34810,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 0,
+      "height": 36533,
+      "temperature": 12564,
+      "moisture": 32296,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 0,
+      "height": 35224,
+      "temperature": 15003,
+      "moisture": 26688,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 0,
+      "height": 33512,
+      "temperature": 17443,
+      "moisture": 21079,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 0,
+      "height": 31116,
+      "temperature": 18657,
+      "moisture": 20655,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 0,
+      "height": 31700,
+      "temperature": 19872,
+      "moisture": 20231,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 0,
+      "height": 28841,
+      "temperature": 21484,
+      "moisture": 22178,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 0,
+      "height": 27853,
+      "temperature": 23096,
+      "moisture": 24127,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 0,
+      "height": 29732,
+      "temperature": 25941,
+      "moisture": 26823,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 0,
+      "height": 29435,
+      "temperature": 28788,
+      "moisture": 29520,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 0,
+      "height": 30288,
+      "temperature": 30915,
+      "moisture": 35049,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 1,
+      "height": 46026,
+      "temperature": 22912,
+      "moisture": 37342,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 1,
+      "height": 43292,
+      "temperature": 20683,
+      "moisture": 36915,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 1,
+      "height": 40771,
+      "temperature": 18453,
+      "moisture": 36488,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 1,
+      "height": 36650,
+      "temperature": 19093,
+      "moisture": 36768,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 1,
+      "height": 35068,
+      "temperature": 19733,
+      "moisture": 37049,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 1,
+      "height": 34737,
+      "temperature": 17172,
+      "moisture": 33622,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 1,
+      "height": 37013,
+      "temperature": 14612,
+      "moisture": 30195,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 1,
+      "height": 34570,
+      "temperature": 14500,
+      "moisture": 27857,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 1,
+      "height": 33874,
+      "temperature": 14390,
+      "moisture": 25518,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 1,
+      "height": 30215,
+      "temperature": 16119,
+      "moisture": 24432,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 1,
+      "height": 28593,
+      "temperature": 17849,
+      "moisture": 23346,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 1,
+      "height": 28131,
+      "temperature": 19913,
+      "moisture": 23330,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 1,
+      "height": 31817,
+      "temperature": 21977,
+      "moisture": 23315,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 1,
+      "height": 31686,
+      "temperature": 26094,
+      "moisture": 27835,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 1,
+      "height": 30716,
+      "temperature": 30212,
+      "moisture": 32357,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 1,
+      "height": 32614,
+      "temperature": 32168,
+      "moisture": 34873,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 2,
+      "height": 42324,
+      "temperature": 24824,
+      "moisture": 33119,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 2,
+      "height": 39276,
+      "temperature": 23203,
+      "moisture": 33260,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 2,
+      "height": 33219,
+      "temperature": 21581,
+      "moisture": 33401,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 2,
+      "height": 35899,
+      "temperature": 20875,
+      "moisture": 35087,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 2,
+      "height": 36579,
+      "temperature": 20168,
+      "moisture": 36773,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 2,
+      "height": 32853,
+      "temperature": 18414,
+      "moisture": 32434,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 2,
+      "height": 33074,
+      "temperature": 16660,
+      "moisture": 28096,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 2,
+      "height": 34473,
+      "temperature": 13998,
+      "moisture": 29027,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 2,
+      "height": 34729,
+      "temperature": 11338,
+      "moisture": 29957,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 2,
+      "height": 29475,
+      "temperature": 13581,
+      "moisture": 28209,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 2,
+      "height": 26628,
+      "temperature": 15827,
+      "moisture": 26463,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 2,
+      "height": 30255,
+      "temperature": 18344,
+      "moisture": 24483,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 2,
+      "height": 30028,
+      "temperature": 20860,
+      "moisture": 22503,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 2,
+      "height": 32819,
+      "temperature": 26247,
+      "moisture": 28849,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 2,
+      "height": 31804,
+      "temperature": 31635,
+      "moisture": 35194,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 2,
+      "height": 31998,
+      "temperature": 33421,
+      "moisture": 34696,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 3,
+      "height": 37371,
+      "temperature": 23379,
+      "moisture": 34962,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 3,
+      "height": 32414,
+      "temperature": 22910,
+      "moisture": 32968,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 3,
+      "height": 30505,
+      "temperature": 22443,
+      "moisture": 30975,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 3,
+      "height": 32236,
+      "temperature": 22025,
+      "moisture": 31844,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 3,
+      "height": 37461,
+      "temperature": 21608,
+      "moisture": 32712,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 3,
+      "height": 33376,
+      "temperature": 20096,
+      "moisture": 31291,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 3,
+      "height": 35588,
+      "temperature": 18584,
+      "moisture": 29871,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 3,
+      "height": 31192,
+      "temperature": 14933,
+      "moisture": 30196,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 3,
+      "height": 32426,
+      "temperature": 11284,
+      "moisture": 30521,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 3,
+      "height": 30538,
+      "temperature": 14235,
+      "moisture": 28375,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 3,
+      "height": 29433,
+      "temperature": 17185,
+      "moisture": 26229,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 3,
+      "height": 30503,
+      "temperature": 18416,
+      "moisture": 24211,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 3,
+      "height": 31011,
+      "temperature": 19647,
+      "moisture": 22192,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 3,
+      "height": 34686,
+      "temperature": 24659,
+      "moisture": 28355,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 3,
+      "height": 36380,
+      "temperature": 29674,
+      "moisture": 34519,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 3,
+      "height": 36524,
+      "temperature": 31868,
+      "moisture": 36518,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 4,
+      "height": 30094,
+      "temperature": 21933,
+      "moisture": 36805,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 4,
+      "height": 28076,
+      "temperature": 22619,
+      "moisture": 32677,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 4,
+      "height": 30400,
+      "temperature": 23305,
+      "moisture": 28549,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 4,
+      "height": 32631,
+      "temperature": 23177,
+      "moisture": 28600,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 4,
+      "height": 34856,
+      "temperature": 23048,
+      "moisture": 28651,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 4,
+      "height": 37723,
+      "temperature": 21778,
+      "moisture": 30148,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 4,
+      "height": 35913,
+      "temperature": 20508,
+      "moisture": 31646,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 4,
+      "height": 34325,
+      "temperature": 15868,
+      "moisture": 31365,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 4,
+      "height": 31068,
+      "temperature": 11230,
+      "moisture": 31085,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 4,
+      "height": 29009,
+      "temperature": 14887,
+      "moisture": 28541,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 4,
+      "height": 27302,
+      "temperature": 18544,
+      "moisture": 25997,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 4,
+      "height": 30536,
+      "temperature": 18489,
+      "moisture": 23939,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 4,
+      "height": 32379,
+      "temperature": 18433,
+      "moisture": 21881,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 4,
+      "height": 35284,
+      "temperature": 23072,
+      "moisture": 27863,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 4,
+      "height": 35916,
+      "temperature": 27712,
+      "moisture": 33844,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 4,
+      "height": 37043,
+      "temperature": 30315,
+      "moisture": 38341,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 5,
+      "height": 27164,
+      "temperature": 24480,
+      "moisture": 36261,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 5,
+      "height": 29876,
+      "temperature": 24388,
+      "moisture": 33224,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 5,
+      "height": 29729,
+      "temperature": 24297,
+      "moisture": 30187,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 5,
+      "height": 31737,
+      "temperature": 24039,
+      "moisture": 29895,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 5,
+      "height": 32978,
+      "temperature": 23780,
+      "moisture": 29604,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 5,
+      "height": 30911,
+      "temperature": 20736,
+      "moisture": 30855,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 5,
+      "height": 31992,
+      "temperature": 17693,
+      "moisture": 32107,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 5,
+      "height": 30171,
+      "temperature": 15296,
+      "moisture": 31155,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 5,
+      "height": 26871,
+      "temperature": 12901,
+      "moisture": 30201,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 5,
+      "height": 26784,
+      "temperature": 14257,
+      "moisture": 29840,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 5,
+      "height": 26164,
+      "temperature": 15613,
+      "moisture": 29478,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 5,
+      "height": 26960,
+      "temperature": 17451,
+      "moisture": 28454,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 5,
+      "height": 27136,
+      "temperature": 19288,
+      "moisture": 27431,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 5,
+      "height": 31521,
+      "temperature": 22074,
+      "moisture": 29210,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 5,
+      "height": 35322,
+      "temperature": 24861,
+      "moisture": 30989,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 5,
+      "height": 37569,
+      "temperature": 27645,
+      "moisture": 34385,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 6,
+      "height": 23278,
+      "temperature": 27027,
+      "moisture": 35718,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 6,
+      "height": 27409,
+      "temperature": 26159,
+      "moisture": 33771,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 6,
+      "height": 27099,
+      "temperature": 25289,
+      "moisture": 31825,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 6,
+      "height": 28928,
+      "temperature": 24901,
+      "moisture": 31192,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 6,
+      "height": 29849,
+      "temperature": 24513,
+      "moisture": 30557,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 6,
+      "height": 27673,
+      "temperature": 19695,
+      "moisture": 31563,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 6,
+      "height": 28513,
+      "temperature": 14877,
+      "moisture": 32569,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 6,
+      "height": 23149,
+      "temperature": 14724,
+      "moisture": 30944,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 6,
+      "height": 19556,
+      "temperature": 14572,
+      "moisture": 29317,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 6,
+      "height": 21355,
+      "temperature": 13628,
+      "moisture": 31139,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 6,
+      "height": 25623,
+      "temperature": 12683,
+      "moisture": 32960,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 6,
+      "height": 22767,
+      "temperature": 16414,
+      "moisture": 32971,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 6,
+      "height": 24159,
+      "temperature": 20144,
+      "moisture": 32981,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 6,
+      "height": 30472,
+      "temperature": 21077,
+      "moisture": 30559,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 6,
+      "height": 32335,
+      "temperature": 22010,
+      "moisture": 28136,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 6,
+      "height": 36268,
+      "temperature": 24976,
+      "moisture": 30429,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 7,
+      "height": 21761,
+      "temperature": 29625,
+      "moisture": 33095,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 7,
+      "height": 23064,
+      "temperature": 28057,
+      "moisture": 32050,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 7,
+      "height": 22448,
+      "temperature": 26490,
+      "moisture": 31007,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 7,
+      "height": 24429,
+      "temperature": 23305,
+      "moisture": 33533,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 7,
+      "height": 28021,
+      "temperature": 20120,
+      "moisture": 36061,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 7,
+      "height": 24955,
+      "temperature": 16652,
+      "moisture": 35453,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 7,
+      "height": 23131,
+      "temperature": 13183,
+      "moisture": 34846,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 7,
+      "height": 18597,
+      "temperature": 13299,
+      "moisture": 33789,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 7,
+      "height": 14746,
+      "temperature": 13415,
+      "moisture": 32732,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 7,
+      "height": 15508,
+      "temperature": 13668,
+      "moisture": 32932,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 7,
+      "height": 17784,
+      "temperature": 13921,
+      "moisture": 33131,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 7,
+      "height": 22109,
+      "temperature": 16059,
+      "moisture": 33647,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 7,
+      "height": 19735,
+      "temperature": 18195,
+      "moisture": 34164,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 7,
+      "height": 26678,
+      "temperature": 18643,
+      "moisture": 31705,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 7,
+      "height": 31046,
+      "temperature": 19092,
+      "moisture": 29247,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 7,
+      "height": 35439,
+      "temperature": 21028,
+      "moisture": 28779,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 8,
+      "height": 21620,
+      "temperature": 32223,
+      "moisture": 30472,
+      "biome_id": 10,
+      "resource_mask": 1
+    },
+    {
+      "local_x": 1,
+      "local_y": 8,
+      "height": 23833,
+      "temperature": 29957,
+      "moisture": 30330,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 8,
+      "height": 19018,
+      "temperature": 27691,
+      "moisture": 30188,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 8,
+      "height": 24465,
+      "temperature": 21710,
+      "moisture": 35876,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 8,
+      "height": 22970,
+      "temperature": 15728,
+      "moisture": 41565,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 8,
+      "height": 21192,
+      "temperature": 13608,
+      "moisture": 39343,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 8,
+      "height": 14328,
+      "temperature": 11488,
+      "moisture": 37123,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 8,
+      "height": 13188,
+      "temperature": 11873,
+      "moisture": 36635,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 8,
+      "height": 10372,
+      "temperature": 12259,
+      "moisture": 36147,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 8,
+      "height": 13138,
+      "temperature": 13709,
+      "moisture": 34725,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 8,
+      "height": 14040,
+      "temperature": 15161,
+      "moisture": 33302,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 8,
+      "height": 15706,
+      "temperature": 15704,
+      "moisture": 34324,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 8,
+      "height": 21678,
+      "temperature": 16247,
+      "moisture": 35347,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 8,
+      "height": 25527,
+      "temperature": 16211,
+      "moisture": 32852,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 8,
+      "height": 28068,
+      "temperature": 16175,
+      "moisture": 30359,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 8,
+      "height": 34316,
+      "temperature": 17081,
+      "moisture": 27129,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 9,
+      "height": 30528,
+      "temperature": 31109,
+      "moisture": 26323,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 9,
+      "height": 25259,
+      "temperature": 29018,
+      "moisture": 28722,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 9,
+      "height": 24932,
+      "temperature": 26928,
+      "moisture": 31121,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 9,
+      "height": 24621,
+      "temperature": 24391,
+      "moisture": 35854,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 9,
+      "height": 23024,
+      "temperature": 21853,
+      "moisture": 40587,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 9,
+      "height": 19458,
+      "temperature": 20068,
+      "moisture": 37841,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 9,
+      "height": 17991,
+      "temperature": 18284,
+      "moisture": 35097,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 9,
+      "height": 13715,
+      "temperature": 18373,
+      "moisture": 35892,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 9,
+      "height": 13637,
+      "temperature": 18462,
+      "moisture": 36687,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 9,
+      "height": 13137,
+      "temperature": 17499,
+      "moisture": 34989,
+      "biome_id": 0,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 9,
+      "height": 15973,
+      "temperature": 16536,
+      "moisture": 33293,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 9,
+      "height": 20280,
+      "temperature": 16671,
+      "moisture": 33553,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 9,
+      "height": 22528,
+      "temperature": 16806,
+      "moisture": 33813,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 9,
+      "height": 26134,
+      "temperature": 17845,
+      "moisture": 32191,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 9,
+      "height": 29696,
+      "temperature": 18886,
+      "moisture": 30569,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 9,
+      "height": 35711,
+      "temperature": 18277,
+      "moisture": 27191,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 10,
+      "height": 33277,
+      "temperature": 29995,
+      "moisture": 22173,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 10,
+      "height": 30740,
+      "temperature": 28080,
+      "moisture": 27115,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 10,
+      "height": 28314,
+      "temperature": 26164,
+      "moisture": 32056,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 10,
+      "height": 25133,
+      "temperature": 27072,
+      "moisture": 35832,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 10,
+      "height": 23113,
+      "temperature": 27978,
+      "moisture": 39609,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 10,
+      "height": 21989,
+      "temperature": 26529,
+      "moisture": 36340,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 10,
+      "height": 18548,
+      "temperature": 25081,
+      "moisture": 33072,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 10,
+      "height": 19685,
+      "temperature": 24873,
+      "moisture": 35149,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 10,
+      "height": 17604,
+      "temperature": 24667,
+      "moisture": 37227,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 10,
+      "height": 19066,
+      "temperature": 21289,
+      "moisture": 35255,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 10,
+      "height": 20789,
+      "temperature": 17912,
+      "moisture": 33283,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 10,
+      "height": 22618,
+      "temperature": 17639,
+      "moisture": 32781,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 10,
+      "height": 28383,
+      "temperature": 17365,
+      "moisture": 32279,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 10,
+      "height": 29888,
+      "temperature": 19481,
+      "moisture": 31529,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 10,
+      "height": 34215,
+      "temperature": 21597,
+      "moisture": 30779,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 10,
+      "height": 35938,
+      "temperature": 19474,
+      "moisture": 27252,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 11,
+      "height": 41261,
+      "temperature": 27045,
+      "moisture": 24006,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 11,
+      "height": 36040,
+      "temperature": 29083,
+      "moisture": 28346,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 11,
+      "height": 28615,
+      "temperature": 31119,
+      "moisture": 32686,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 11,
+      "height": 24721,
+      "temperature": 32568,
+      "moisture": 36098,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 11,
+      "height": 22544,
+      "temperature": 34017,
+      "moisture": 39511,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 11,
+      "height": 21836,
+      "temperature": 31257,
+      "moisture": 36536,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 11,
+      "height": 17803,
+      "temperature": 28497,
+      "moisture": 33564,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 11,
+      "height": 16695,
+      "temperature": 27761,
+      "moisture": 34041,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 11,
+      "height": 15653,
+      "temperature": 27025,
+      "moisture": 34520,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 11,
+      "height": 19419,
+      "temperature": 23094,
+      "moisture": 34195,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 11,
+      "height": 21862,
+      "temperature": 19165,
+      "moisture": 33869,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 11,
+      "height": 27221,
+      "temperature": 18387,
+      "moisture": 34969,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 11,
+      "height": 29429,
+      "temperature": 17609,
+      "moisture": 36068,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 11,
+      "height": 29547,
+      "temperature": 17464,
+      "moisture": 32468,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 11,
+      "height": 31702,
+      "temperature": 17320,
+      "moisture": 28868,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 11,
+      "height": 35330,
+      "temperature": 16663,
+      "moisture": 27271,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 12,
+      "height": 45938,
+      "temperature": 24096,
+      "moisture": 25840,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 12,
+      "height": 38440,
+      "temperature": 30084,
+      "moisture": 29577,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 12,
+      "height": 29312,
+      "temperature": 36073,
+      "moisture": 33316,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 12,
+      "height": 22523,
+      "temperature": 38065,
+      "moisture": 36364,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 12,
+      "height": 20140,
+      "temperature": 40057,
+      "moisture": 39413,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 12,
+      "height": 20493,
+      "temperature": 35985,
+      "moisture": 36733,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 12,
+      "height": 16670,
+      "temperature": 31915,
+      "moisture": 34055,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 12,
+      "height": 18439,
+      "temperature": 30649,
+      "moisture": 32933,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 12,
+      "height": 18013,
+      "temperature": 29384,
+      "moisture": 31813,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 12,
+      "height": 22031,
+      "temperature": 24901,
+      "moisture": 33135,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 12,
+      "height": 26971,
+      "temperature": 20418,
+      "moisture": 34456,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 12,
+      "height": 28068,
+      "temperature": 19136,
+      "moisture": 37156,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 12,
+      "height": 30365,
+      "temperature": 17854,
+      "moisture": 39857,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 12,
+      "height": 30456,
+      "temperature": 15447,
+      "moisture": 33407,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 12,
+      "height": 33237,
+      "temperature": 13041,
+      "moisture": 26958,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 12,
+      "height": 33852,
+      "temperature": 13852,
+      "moisture": 27291,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 13,
+      "height": 45382,
+      "temperature": 27361,
+      "moisture": 26315,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 13,
+      "height": 40351,
+      "temperature": 31430,
+      "moisture": 28681,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 13,
+      "height": 30257,
+      "temperature": 35499,
+      "moisture": 31048,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 13,
+      "height": 27043,
+      "temperature": 35873,
+      "moisture": 31843,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 13,
+      "height": 19513,
+      "temperature": 36247,
+      "moisture": 32637,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 13,
+      "height": 21267,
+      "temperature": 32996,
+      "moisture": 32095,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 13,
+      "height": 19324,
+      "temperature": 29744,
+      "moisture": 31553,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 13,
+      "height": 21238,
+      "temperature": 30271,
+      "moisture": 31792,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 13,
+      "height": 23746,
+      "temperature": 30797,
+      "moisture": 32032,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 13,
+      "height": 24538,
+      "temperature": 26521,
+      "moisture": 33110,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 13,
+      "height": 25244,
+      "temperature": 22246,
+      "moisture": 34188,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 13,
+      "height": 25129,
+      "temperature": 19547,
+      "moisture": 36300,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 13,
+      "height": 27777,
+      "temperature": 16848,
+      "moisture": 38412,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 13,
+      "height": 30645,
+      "temperature": 16370,
+      "moisture": 33824,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 13,
+      "height": 36624,
+      "temperature": 15893,
+      "moisture": 29237,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 13,
+      "height": 36144,
+      "temperature": 15875,
+      "moisture": 28927,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 14,
+      "height": 45792,
+      "temperature": 30628,
+      "moisture": 26791,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 14,
+      "height": 39562,
+      "temperature": 32776,
+      "moisture": 27785,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 14,
+      "height": 35435,
+      "temperature": 34925,
+      "moisture": 28781,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 14,
+      "height": 27224,
+      "temperature": 33681,
+      "moisture": 27322,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 14,
+      "height": 23000,
+      "temperature": 32438,
+      "moisture": 25863,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 14,
+      "height": 19300,
+      "temperature": 30007,
+      "moisture": 27457,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 14,
+      "height": 17800,
+      "temperature": 27575,
+      "moisture": 29052,
+      "biome_id": 1,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 14,
+      "height": 21292,
+      "temperature": 29893,
+      "moisture": 30652,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 14,
+      "height": 26927,
+      "temperature": 32211,
+      "moisture": 32251,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 9,
+      "local_y": 14,
+      "height": 23105,
+      "temperature": 28142,
+      "moisture": 33086,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 14,
+      "height": 19969,
+      "temperature": 24074,
+      "moisture": 33922,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 14,
+      "height": 22129,
+      "temperature": 19959,
+      "moisture": 35444,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 14,
+      "height": 24201,
+      "temperature": 15844,
+      "moisture": 36967,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 14,
+      "height": 32281,
+      "temperature": 17295,
+      "moisture": 34241,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 14,
+      "height": 35875,
+      "temperature": 18745,
+      "moisture": 31517,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 14,
+      "height": 38864,
+      "temperature": 17898,
+      "moisture": 30563,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 0,
+      "local_y": 15,
+      "height": 51467,
+      "temperature": 34613,
+      "moisture": 27125,
+      "biome_id": 3,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 1,
+      "local_y": 15,
+      "height": 42924,
+      "temperature": 33854,
+      "moisture": 26955,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 2,
+      "local_y": 15,
+      "height": 36292,
+      "temperature": 33095,
+      "moisture": 26787,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 3,
+      "local_y": 15,
+      "height": 33053,
+      "temperature": 30441,
+      "moisture": 24481,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 4,
+      "local_y": 15,
+      "height": 27112,
+      "temperature": 27788,
+      "moisture": 22176,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 5,
+      "local_y": 15,
+      "height": 26362,
+      "temperature": 27041,
+      "moisture": 26203,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 6,
+      "local_y": 15,
+      "height": 21991,
+      "temperature": 26293,
+      "moisture": 30230,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 7,
+      "local_y": 15,
+      "height": 23258,
+      "temperature": 28732,
+      "moisture": 32471,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 8,
+      "local_y": 15,
+      "height": 23777,
+      "temperature": 31171,
+      "moisture": 34714,
+      "biome_id": 10,
+      "resource_mask": 1
+    },
+    {
+      "local_x": 9,
+      "local_y": 15,
+      "height": 21363,
+      "temperature": 27634,
+      "moisture": 35005,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 10,
+      "local_y": 15,
+      "height": 21221,
+      "temperature": 24098,
+      "moisture": 35296,
+      "biome_id": 10,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 11,
+      "local_y": 15,
+      "height": 24252,
+      "temperature": 19887,
+      "moisture": 36848,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 12,
+      "local_y": 15,
+      "height": 27503,
+      "temperature": 15677,
+      "moisture": 38401,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 13,
+      "local_y": 15,
+      "height": 32749,
+      "temperature": 16868,
+      "moisture": 35075,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 14,
+      "local_y": 15,
+      "height": 39792,
+      "temperature": 18061,
+      "moisture": 31748,
+      "biome_id": 5,
+      "resource_mask": 0
+    },
+    {
+      "local_x": 15,
+      "local_y": 15,
+      "height": 42971,
+      "temperature": 18891,
+      "moisture": 30695,
+      "biome_id": 5,
+      "resource_mask": 0
+    }
+  ],
+  "commitment": "0x3b1b29d53b4309e58fab075d0602ee80dd2a0af1708c6dce50939a249635941"
+}

@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::coord::{ChunkCoord, ChunkSize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PublicInputs {
@@ -41,10 +41,7 @@ impl ProofPackage {
             prover_version,
             protocol_version,
             public_inputs,
-            proof: ProofPayload {
-                format: "stwo-cairo-proof-json".to_string(),
-                payload: proof_payload,
-            },
+            proof: ProofPayload { format: "stwo-cairo-proof-json".to_string(), payload: proof_payload },
         }
     }
 }
