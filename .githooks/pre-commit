@@ -1,0 +1,16 @@
+#!/bin/sh
+# Zenoform pre-commit hook
+# Install: cp .githooks/pre-commit .git/hooks/ && chmod +x .git/hooks/pre-commit
+
+set -e
+
+echo "Running cargo fmt..."
+cargo fmt --all -- --check
+
+echo "Running cargo clippy..."
+cargo clippy --all-targets -- -D warnings
+
+echo "Running cargo test..."
+cargo test --all
+
+echo "Pre-commit checks passed."

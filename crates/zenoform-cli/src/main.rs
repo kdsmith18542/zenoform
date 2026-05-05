@@ -245,3 +245,231 @@ fn main() {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::process::Command;
+
+    fn cli_bin() -> Command {
+        let mut path = std::env::current_exe().unwrap();
+        path.pop();
+        path.pop();
+        let exe = if cfg!(windows) { "zenoform-cli.exe" } else { "zenoform-cli" };
+        path.push(exe);
+        Command::new(path)
+    }
+
+    #[test]
+    fn test_cli_generate_creates_valid_chunk() {
+        let tmp = std::env::temp_dir().join("zenoform_test_chunk.json");
+        let output = cli_bin()
+            .args([
+                "generate",
+                "--seed",
+                "42",
+                "--world",
+                "test",
+                "--module",
+                "terrain.fixed_noise.v1",
+                "--chunk",
+                "0,0,0",
+                "--size",
+                "4x4",
+                "--out",
+                tmp.to_str().unwrap(),
+            ])
+            .output()
+            .expect("Failed to run generate");
+
+        assert!(output.status.success(), "stderr: {}", String::from_utf8_lossy(&output.stderr));
+        assert!(tmp.exists());
+
+        let content = fs::read_to_string(&tmp).unwrap();
+        let chunk: Chunk = serde_json::from_str(&content).unwrap();
+        assert_eq!(chunk.chunk_size.width, 4);
+        assert_eq!(chunk.chunk_size.height, 4);
+        assert_eq!(chunk.cells.len(), 16);
+        assert!(!chunk.commitment.is_empty());
+
+        fs::remove_file(&tmp).ok();
+    }
+
+    #[test]
+    fn test_cli_generate_and_verify_roundtrip() {
+        let tmp_dir = std::env::temp_dir().join("zenoform_roundtrip");
+        fs::create_dir_all(&tmp_dir).unwrap();
+        let chunk_file = tmp_dir.join("chunk.json");
+        let proof_file = tmp_dir.join("proof.json");
+
+        let gen_out = cli_bin()
+            .args([
+                "generate",
+                "--seed",
+                "99",
+                "--world",
+                "roundtrip",
+                "--module",
+                "terrain.fixed_noise.v1",
+                "--chunk",
+                "1,2,3",
+                "--size",
+                "8x8",
+                "--out",
+                chunk_file.to_str().unwrap(),
+            ])
+            .output()
+            .unwrap();
+        assert!(gen_out.status.success());
+
+        let prove_out = cli_bin()
+            .args(["prove", "--chunk", chunk_file.to_str().unwrap(), "--out", proof_file.to_str().unwrap()])
+            .output()
+            .unwrap();
+        assert!(prove_out.status.success());
+
+        let verify_out = cli_bin()
+            .args(["verify", "--chunk", chunk_file.to_str().unwrap(), "--proof", proof_file.to_str().unwrap()])
+            .output()
+            .unwrap();
+        assert!(verify_out.status.success(), "verify stderr: {}", String::from_utf8_lossy(&verify_out.stderr));
+        let stdout = String::from_utf8_lossy(&verify_out.stdout);
+        assert!(stdout.contains("VERIFICATION SUCCESS"));
+
+        fs::remove_dir_all(&tmp_dir).ok();
+    }
+
+    #[test]
+    fn test_cli_tampered_chunk_fails_verification() {
+        let tmp_dir = std::env::temp_dir().join("zenoform_tamper");
+        fs::create_dir_all(&tmp_dir).unwrap();
+        let chunk_file = tmp_dir.join("chunk.json");
+        let proof_file = tmp_dir.join("proof.json");
+        let tampered_file = tmp_dir.join("tampered.json");
+
+        cli_bin()
+            .args([
+                "generate",
+                "--seed",
+                "1",
+                "--world",
+                "tamper",
+                "--module",
+                "terrain.fixed_noise.v1",
+                "--chunk",
+                "0,0,0",
+                "--size",
+                "4x4",
+                "--out",
+                chunk_file.to_str().unwrap(),
+            ])
+            .output()
+            .unwrap();
+        cli_bin()
+            .args(["prove", "--chunk", chunk_file.to_str().unwrap(), "--out", proof_file.to_str().unwrap()])
+            .output()
+            .unwrap();
+
+        let tamper_out = cli_bin()
+            .args([
+                "tamper",
+                "--chunk",
+                chunk_file.to_str().unwrap(),
+                "--index",
+                "0",
+                "--height",
+                "9999",
+                "--out",
+                tampered_file.to_str().unwrap(),
+            ])
+            .output()
+            .unwrap();
+        assert!(tamper_out.status.success());
+
+        let verify_out = cli_bin()
+            .args(["verify", "--chunk", tampered_file.to_str().unwrap(), "--proof", proof_file.to_str().unwrap()])
+            .output()
+            .unwrap();
+        assert!(!verify_out.status.success());
+        let stderr = String::from_utf8_lossy(&verify_out.stderr);
+        assert!(stderr.contains("VERIFICATION FAILURE"));
+
+        fs::remove_dir_all(&tmp_dir).ok();
+    }
+
+    #[test]
+    fn test_cli_compile_dsl() {
+        let tmp_dir = std::env::temp_dir().join("zenoform_compile");
+        fs::create_dir_all(&tmp_dir).unwrap();
+
+        let dsl_source = r#"module terrain.test {
+    input:
+        seed: Field
+    cell:
+        height = noise2d(seed, world_x, world_y)
+    output:
+        height: u16
+}"#;
+        let dsl_file = tmp_dir.join("test.zf");
+        fs::write(&dsl_file, dsl_source).unwrap();
+
+        let compile_out = cli_bin()
+            .args([
+                "compile",
+                "--file",
+                dsl_file.to_str().unwrap(),
+                "--targets",
+                "rust,cairo",
+                "--out-dir",
+                tmp_dir.to_str().unwrap(),
+            ])
+            .output()
+            .unwrap();
+        assert!(compile_out.status.success(), "compile stderr: {}", String::from_utf8_lossy(&compile_out.stderr));
+
+        assert!(tmp_dir.join("module.rs").exists());
+        assert!(tmp_dir.join("module.cairo").exists());
+
+        fs::remove_dir_all(&tmp_dir).ok();
+    }
+
+    #[test]
+    fn test_cli_bench_runs_without_error() {
+        let bench_out = cli_bin()
+            .args(["bench", "--seed", "1", "--module", "terrain.fixed_noise.v1", "--sizes", "4x4", "--runs", "2"])
+            .output()
+            .unwrap();
+        assert!(bench_out.status.success(), "bench stderr: {}", String::from_utf8_lossy(&bench_out.stderr));
+        let stdout = String::from_utf8_lossy(&bench_out.stdout);
+        assert!(stdout.contains("4x4"));
+        assert!(stdout.contains("Cells"));
+    }
+
+    #[test]
+    fn test_parse_chunk_coord_valid() {
+        let coord = parse_chunk_coord("1,2,3").unwrap();
+        assert_eq!(coord.x, 1);
+        assert_eq!(coord.y, 2);
+        assert_eq!(coord.z, 3);
+    }
+
+    #[test]
+    fn test_parse_chunk_coord_invalid() {
+        assert!(parse_chunk_coord("1,2").is_err());
+        assert!(parse_chunk_coord("a,b,c").is_err());
+        assert!(parse_chunk_coord("").is_err());
+    }
+
+    #[test]
+    fn test_parse_chunk_size_valid() {
+        let size = parse_chunk_size("32x32").unwrap();
+        assert_eq!(size.width, 32);
+        assert_eq!(size.height, 32);
+    }
+
+    #[test]
+    fn test_parse_chunk_size_invalid() {
+        assert!(parse_chunk_size("32").is_err());
+        assert!(parse_chunk_size("abc").is_err());
+    }
+}

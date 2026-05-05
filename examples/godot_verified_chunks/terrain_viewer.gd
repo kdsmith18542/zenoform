@@ -65,12 +65,21 @@ func create_chunk_mesh(data):
     add_child(mesh_instance)
 
 func update_status_visual(is_valid):
+    # Clear any existing status overlays
+    for child in get_children():
+        if child is ColorRect and child.name.begins_with("StatusOverlay"):
+            child.queue_free()
+        if child is Label and child.name.begins_with("StatusLabel"):
+            child.queue_free()
+    
     var status_overlay = ColorRect.new()
+    status_overlay.name = "StatusOverlay"
     status_overlay.size = Vector2(200, 40)
     status_overlay.position = Vector2(10, 10)
     add_child(status_overlay)
     
     var label = Label.new()
+    label.name = "StatusLabel"
     label.position = Vector2(10, 10)
     add_child(label)
     

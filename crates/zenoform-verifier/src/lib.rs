@@ -20,6 +20,10 @@ pub enum VerifierError {
     ProofSignatureInvalid,
     #[error("Proof data is empty or malformed")]
     ProofDataEmpty,
+    #[error("STARK proof verification failed: {0}")]
+    StarkVerificationFailed(String),
+    #[error("Unsupported STARK proof version: {0}")]
+    UnsupportedStarkVersion(String),
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -27,6 +31,173 @@ pub enum VerificationLevel {
     Minimal,
     Standard,
     Strict,
+}
+
+/// A deserialized STARK proof payload containing the cryptographic proof data.
+///
+/// This structure is designed to be forward-compatible with multiple STARK prover backends
+/// (Stwo, Stone, Giza, etc.). The `proof_bytes` field holds the opaque binary proof data,
+/// while `public_inputs_hash` allows quick validation that the proof was generated for the
+/// expected inputs without running full verification.
+#[derive(Debug, Clone)]
+pub struct StarkProof {
+    /// Prover backend that generated this proof (e.g., "stwo-cairo", "stone", "giza")
+    pub prover_backend: String,
+    /// Version of the prover backend
+    pub backend_version: String,
+    /// Opaque binary proof data (format depends on prover_backend)
+    pub proof_bytes: Vec<u8>,
+    /// Hash of the public inputs used to generate the proof (Poseidon or Blake3)
+    pub public_inputs_hash: String,
+    /// Number of steps / trace rows in the proof
+    pub trace_length: Option<u64>,
+    /// Verification key identifier (for proof recycling detection)
+    pub verification_key_id: Option<String>,
+}
+
+/// Trait for pluggable STARK verification backends.
+///
+/// Implement this trait to integrate a specific STARK prover/verifier (e.g., Stwo, Stone).
+/// The `verify` method receives the deserialized proof and public inputs, and must return
+/// Ok(()) only if the cryptographic proof is valid.
+pub trait StarkVerifierBackend: Send + Sync {
+    /// Name of the backend (for diagnostics and logging)
+    fn name(&self) -> &str;
+
+    /// Verify a STARK proof cryptographically.
+    ///
+    /// # Arguments
+    /// * `proof` - The deserialized STARK proof data
+    /// * `public_inputs` - The public inputs that the proof claims to verify
+    ///
+    /// # Returns
+    /// * `Ok(())` if the proof is cryptographically valid
+    /// * `Err(VerifierError::StarkVerificationFailed)` if the proof is invalid
+    fn verify(&self, proof: &StarkProof, public_inputs: &serde_json::Value) -> Result<(), VerifierError>;
+}
+
+/// Default verifier backend that always fails with StarkVerificationFailed.
+///
+/// This is a placeholder until a real STARK verifier backend (e.g., stwo-cairo) is integrated.
+/// To integrate a real backend:
+/// 1. Implement `StarkVerifierBackend` for your prover's Rust bindings
+/// 2. Register it in `PROOF_REGISTRY` at program startup
+pub struct NoopStarkVerifier;
+
+impl StarkVerifierBackend for NoopStarkVerifier {
+    fn name(&self) -> &str {
+        "noop"
+    }
+
+    fn verify(&self, _proof: &StarkProof, _public_inputs: &serde_json::Value) -> Result<(), VerifierError> {
+        Err(VerifierError::StarkVerificationFailed(
+            "No STARK verifier backend configured. Install a backend (e.g., stwo-cairo) and register it.".to_string(),
+        ))
+    }
+}
+
+/// Attempt to deserialize a `ProofPackage` into a structured `StarkProof`.
+///
+/// This function extracts the proof payload and attempts to interpret it as a STARK proof.
+/// Currently supports:
+/// - `stwo-cairo-proof-json`: JSON-encoded proof metadata with base64-encoded proof bytes
+/// - `stwo-cairo-proof-binary`: Raw binary proof data (hex-encoded in JSON string)
+/// - `self-signed-v1`: Self-signed proof hash (not a true STARK proof, but verifiable)
+pub fn deserialize_stark_proof(package: &ProofPackage) -> Result<StarkProof, VerifierError> {
+    match package.proof.format.as_str() {
+        "stwo-cairo-proof-json" => deserialize_json_proof(package),
+        "stwo-cairo-proof-binary" => deserialize_binary_proof(package),
+        "self-signed-v1" => deserialize_self_signed_proof(package),
+        "mock" => Err(VerifierError::InvalidProofFormat("mock proofs do not contain STARK data".to_string())),
+        other => Err(VerifierError::InvalidProofFormat(format!(
+            "cannot deserialize proof format '{}': no deserializer available",
+            other
+        ))),
+    }
+}
+
+fn deserialize_json_proof(package: &ProofPackage) -> Result<StarkProof, VerifierError> {
+    let payload = &package.proof.payload;
+
+    let proof_b64 = payload
+        .get("proof_bytes")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| VerifierError::ProofIntegrityError("missing proof_bytes field".to_string()))?;
+
+    let proof_bytes = base64_decode(proof_b64)?;
+
+    let public_inputs_hash = payload.get("public_inputs_hash").and_then(|v| v.as_str()).unwrap_or("").to_string();
+
+    let trace_length = payload.get("trace_length").and_then(|v| v.as_u64());
+
+    let verification_key_id = payload.get("verification_key_id").and_then(|v| v.as_str()).map(|s| s.to_string());
+
+    Ok(StarkProof {
+        prover_backend: package.prover.clone(),
+        backend_version: package.prover_version.clone(),
+        proof_bytes,
+        public_inputs_hash,
+        trace_length,
+        verification_key_id,
+    })
+}
+
+fn deserialize_binary_proof(package: &ProofPackage) -> Result<StarkProof, VerifierError> {
+    let payload = &package.proof.payload;
+
+    let proof_hex = payload
+        .get("proof_bytes")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| VerifierError::ProofIntegrityError("missing proof_bytes field".to_string()))?;
+
+    let proof_bytes = hex_decode(proof_hex)?;
+
+    Ok(StarkProof {
+        prover_backend: package.prover.clone(),
+        backend_version: package.prover_version.clone(),
+        proof_bytes,
+        public_inputs_hash: String::new(),
+        trace_length: None,
+        verification_key_id: None,
+    })
+}
+
+fn deserialize_self_signed_proof(package: &ProofPackage) -> Result<StarkProof, VerifierError> {
+    let payload = &package.proof.payload;
+
+    let signature_hex = payload
+        .get("signature")
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| VerifierError::ProofIntegrityError("missing signature field".to_string()))?;
+
+    let signature = hex_decode(signature_hex)?;
+
+    Ok(StarkProof {
+        prover_backend: "self-signed".to_string(),
+        backend_version: "1".to_string(),
+        proof_bytes: signature,
+        public_inputs_hash: payload.get("public_inputs_hash").and_then(|v| v.as_str()).unwrap_or("").to_string(),
+        trace_length: None,
+        verification_key_id: None,
+    })
+}
+
+fn base64_decode(s: &str) -> Result<Vec<u8>, VerifierError> {
+    use base64::Engine;
+    base64::engine::general_purpose::STANDARD
+        .decode(s)
+        .map_err(|e| VerifierError::ProofIntegrityError(format!("base64 decode error: {}", e)))
+}
+
+fn hex_decode(s: &str) -> Result<Vec<u8>, VerifierError> {
+    let s = s.strip_prefix("0x").unwrap_or(s);
+    (0..s.len())
+        .step_by(2)
+        .map(|i| {
+            u8::from_str_radix(&s[i..i + 2.min(s.len() - i)], 16)
+                .map_err(|e| VerifierError::ProofIntegrityError(format!("hex decode error: {}", e)))
+        })
+        .collect()
 }
 
 pub fn verify_chunk(chunk: &Chunk, proof: &ProofPackage) -> Result<(), VerifierError> {
@@ -42,6 +213,27 @@ pub fn verify_chunk_with_level(
     verify_public_inputs(chunk, proof)?;
     verify_commitment_integrity(chunk, proof)?;
     verify_proof_integrity(proof, level)?;
+
+    Ok(())
+}
+
+/// Verify a chunk using a specific STARK verifier backend.
+///
+/// This is the advanced verification path that performs full cryptographic STARK proof
+/// verification in addition to the standard structural checks.
+pub fn verify_chunk_with_backend(
+    chunk: &Chunk,
+    proof: &ProofPackage,
+    backend: &dyn StarkVerifierBackend,
+) -> Result<(), VerifierError> {
+    // 1. Standard structural verification
+    verify_chunk_with_level(chunk, proof, VerificationLevel::Standard)?;
+
+    // 2. Deserialize the STARK proof payload
+    let stark_proof = deserialize_stark_proof(proof)?;
+
+    // 3. Cryptographic STARK verification
+    backend.verify(&stark_proof, &proof.proof.payload)?;
 
     Ok(())
 }
@@ -280,5 +472,93 @@ mod tests {
         let mut proof = make_test_proof(&chunk);
         proof.proof.payload = serde_json::Value::Null;
         assert!(verify_chunk(&chunk, &proof).is_err());
+    }
+
+    // --- STARK proof deserialization tests ---
+
+    #[test]
+    fn test_deserialize_mock_proof_fails() {
+        let chunk = make_test_chunk();
+        let mut proof = make_test_proof(&chunk);
+        proof.proof.format = "mock".to_string();
+        let result = deserialize_stark_proof(&proof);
+        assert!(result.is_err());
+        assert!(matches!(result.unwrap_err(), VerifierError::InvalidProofFormat(_)));
+    }
+
+    #[test]
+    fn test_deserialize_self_signed_proof() {
+        let chunk = make_test_chunk();
+        let mut proof = make_test_proof(&chunk);
+        proof.proof.format = "self-signed-v1".to_string();
+        proof.proof.payload = serde_json::json!({
+            "signature": "0xabcd1234",
+            "public_inputs_hash": "0xdeadbeef"
+        });
+
+        let stark = deserialize_stark_proof(&proof).unwrap();
+        assert_eq!(stark.prover_backend, "self-signed");
+        assert_eq!(stark.public_inputs_hash, "0xdeadbeef");
+        assert_eq!(stark.proof_bytes, vec![0xab, 0xcd, 0x12, 0x34]);
+    }
+
+    #[test]
+    fn test_deserialize_json_proof() {
+        let chunk = make_test_chunk();
+        let mut proof = make_test_proof(&chunk);
+        proof.proof.format = "stwo-cairo-proof-json".to_string();
+        // base64 of "hello stark"
+        proof.proof.payload = serde_json::json!({
+            "proof_bytes": "aGVsbG8gc3Rhcms=",
+            "public_inputs_hash": "0x1234",
+            "trace_length": 1024
+        });
+
+        let stark = deserialize_stark_proof(&proof).unwrap();
+        assert_eq!(stark.proof_bytes, b"hello stark");
+        assert_eq!(stark.public_inputs_hash, "0x1234");
+        assert_eq!(stark.trace_length, Some(1024));
+    }
+
+    #[test]
+    fn test_deserialize_binary_proof() {
+        let chunk = make_test_chunk();
+        let mut proof = make_test_proof(&chunk);
+        proof.proof.format = "stwo-cairo-proof-binary".to_string();
+        proof.proof.payload = serde_json::json!({
+            "proof_bytes": "0xdeadbeef"
+        });
+
+        let stark = deserialize_stark_proof(&proof).unwrap();
+        assert_eq!(stark.proof_bytes, vec![0xde, 0xad, 0xbe, 0xef]);
+    }
+
+    #[test]
+    fn test_deserialize_invalid_hex_fails() {
+        let chunk = make_test_chunk();
+        let mut proof = make_test_proof(&chunk);
+        proof.proof.format = "stwo-cairo-proof-binary".to_string();
+        proof.proof.payload = serde_json::json!({
+            "proof_bytes": "not_hex"
+        });
+
+        let result = deserialize_stark_proof(&proof);
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_noop_stark_verifier_fails() {
+        let chunk = make_test_chunk();
+        let mut proof = make_test_proof(&chunk);
+        proof.proof.format = "self-signed-v1".to_string();
+        proof.proof.payload = serde_json::json!({
+            "signature": "0xabcd",
+            "public_inputs_hash": "0x1234"
+        });
+
+        let backend = NoopStarkVerifier;
+        let result = verify_chunk_with_backend(&chunk, &proof, &backend);
+        assert!(result.is_err());
+        assert!(matches!(result.unwrap_err(), VerifierError::StarkVerificationFailed(_)));
     }
 }

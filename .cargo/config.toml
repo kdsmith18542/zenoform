@@ -1,0 +1,26 @@
+# Clippy configuration for the Zenoform workspace
+# Run with: cargo clippy --all-targets
+
+[workspace.lints.clippy]
+# Style
+should_implement_trait = "allow"        # Fixed-point math uses custom add/sub/mul/div names
+collapsible_match = "allow"             # Some match arms are clearer when nested
+single_match = "allow"                  # match can be clearer than if-let for enums
+
+# Pedantic
+match_same_arms = "warn"
+needless_pass_by_value = "warn"
+option_if_let_else = "warn"
+
+# Correctness
+match_bool = "deny"
+
+# Complexity
+too_many_arguments = "warn"
+type_complexity = "warn"
+
+# Performance
+unnecessary_to_owned = "warn"
+
+# Suspicious
+single_char_lifetime_names = "warn"
