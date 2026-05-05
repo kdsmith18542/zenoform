@@ -5,6 +5,7 @@ members = [
     "crates/zenoform-verifier",
     "crates/zenoform-ffi",
     "crates/zenoform-dsl",
+    "crates/zenoform-wasm",
 ]
 resolver = "2"
 
@@ -14,7 +15,7 @@ serde_json = "1.0"
 thiserror = "1.0"
 clap = { version = "4.4", features = ["derive"] }
 blake3 = "1.5"
- starknet-crypto = "0.8"
+starknet-crypto = "0.8"
 
 [workspace.lints.clippy]
 should_implement_trait = "allow"

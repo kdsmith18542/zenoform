@@ -10,17 +10,92 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  rust-build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Rust
       uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+
+    - name: Cache cargo registry
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml', '**/Cargo.lock') }}
+
+    - name: Check formatting
+      run: cargo fmt --all -- --check
+
+    - name: Clippy
+      run: cargo clippy --all-targets -- -D warnings
 
     - name: Build Workspace
       run: cargo build --verbose
 
     - name: Run Tests
       run: cargo test --verbose
+
+  cairo-build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Scarb
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Build Cairo
+      working-directory: cairo/terrain_v1
+      run: scarb build
+
+    - name: Test Cairo
+      working-directory: cairo/terrain_v1
+      run: scarb test
+
+  mojo-build-and-test:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Mojo
+      run: |
+        curl https://get.modular.com | sh
+        modular auth $MODULAR_AUTH
+        modular install mojo
+        echo "$HOME/.modular/bin" >> $GITHUB_PATH
+      env:
+        MODULAR_AUTH: ${{ secrets.MODULAR_AUTH }}
+
+    - name: Build Mojo kernels
+      working-directory: mojo/zenoform_kernels
+      run: mojo build terrain.mojo
+
+    - name: Test Mojo kernels
+      working-directory: mojo/zenoform_kernels
+      run: mojo test
+
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install pre-commit hook
+      run: |
+        cp .githooks/pre-commit .git/hooks/pre-commit
+        chmod +x .git/hooks/pre-commit
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+
+    - name: Run pre-commit checks
+      run: .git/hooks/pre-commit

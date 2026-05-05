@@ -1,0 +1,17 @@
+[package]
+name = "zenoform-wasm"
+version = "0.1.0"
+edition = "2024"
+
+[lints]
+workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+zenoform-core = { path = "../zenoform-core" }
+zenoform-verifier = { path = "../zenoform-verifier" }
+wasm-bindgen = "0.2"
+serde = { workspace = true }
+serde_json = { workspace = true }

@@ -3,18 +3,18 @@ use crate::commitment::calculate_poseidon_commitment;
 use crate::coord::{ChunkCoord, ChunkSize};
 use crate::fixed::Fixed;
 use crate::noise::fractal_noise_2d;
+use crate::seed_hash::{default_registry, derive_seed_hash};
 
 /// Generate a deterministic terrain chunk with height, temperature, moisture,
 /// biome classification, and resource placement.
 pub fn generate_terrain_v1(world_id: String, seed: i32, coord: ChunkCoord, size: ChunkSize) -> Chunk {
-    let mut chunk = Chunk::new_v1(
-        world_id,
-        format!("{:x}", seed),
-        coord,
-        size,
-        "terrain.fixed_noise.v1".to_string(),
-        "0x-module-hash-placeholder".to_string(),
-    );
+    let module_id = "terrain.fixed_noise.v1".to_string();
+    let seed_hex = derive_seed_hash(&world_id, seed);
+
+    let registry = default_registry();
+    let module_hash = registry.get_hash(&module_id).unwrap_or("0x-module-hash-placeholder").to_string();
+
+    let mut chunk = Chunk::new_v1(world_id, seed_hex, coord, size, module_id, module_hash);
 
     for y in 0..size.height {
         for x in 0..size.width {
