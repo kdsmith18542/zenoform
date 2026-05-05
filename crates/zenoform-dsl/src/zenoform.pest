@@ -1,0 +1,23 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+COMMENT = _{ "//" ~ (!"\n" ~ ANY)* }
+
+program = { SOI ~ module_def ~ EOI }
+
+module_def = { "module" ~ identifier ~ "{" ~ input_block ~ cell_block ~ output_block ~ "}" }
+
+input_block = { "input" ~ ":" ~ (field_def)* }
+cell_block = { "cell" ~ ":" ~ (assignment)* }
+output_block = { "output" ~ ":" ~ (field_def)* }
+
+field_def = { identifier ~ ":" ~ type_name }
+assignment = { identifier ~ "=" ~ expression }
+
+expression = { term ~ (operation ~ term)* }
+term = { function_call | identifier | number | "(" ~ expression ~ ")" }
+
+function_call = { identifier ~ "(" ~ (expression ~ ("," ~ expression)*)? ~ ")" }
+
+operation = { "+" | "-" | "*" | "/" }
+type_name = { "i32" | "u16" | "u32" | "u8" | "Fixed" | "Field" }
+identifier = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+number = @{ ASCII_DIGIT+ }

@@ -1,0 +1,21 @@
+module terrain.fixed_noise.v1 {
+    input:
+        seed: Field
+        chunk_x: i32
+        chunk_y: i32
+        chunk_z: i32
+
+    cell:
+        height = noise2d(seed, world_x, world_y, octaves=4)
+        moisture = noise2d(seed + 1, world_x, world_y, octaves=3)
+        temperature = noise2d(seed + 2, world_x, world_y, octaves=3)
+        biome_id = 4
+        resource_mask = 0
+
+    output:
+        height: u16
+        moisture: u16
+        temperature: u16
+        biome_id: u8
+        resource_mask: u16
+}

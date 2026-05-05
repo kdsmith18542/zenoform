@@ -1,10 +1,13 @@
 [package]
-name = "zenoform-verifier"
+name = "zenoform-dsl"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-zenoform-core = { path = "../zenoform-core" }
+pest = "2.7"
+pest_derive = "2.7"
+quote = "1.0"
+proc-macro2 = "1.0"
 serde = { workspace = true }
 serde_json = { workspace = true }
 thiserror = { workspace = true }

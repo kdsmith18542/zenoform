@@ -4,6 +4,7 @@ members = [
     "crates/zenoform-cli",
     "crates/zenoform-verifier",
     "crates/zenoform-ffi",
+    "crates/zenoform-dsl",
 ]
 resolver = "2"
 

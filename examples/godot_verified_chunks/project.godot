@@ -1,0 +1,12 @@
+config_version=5
+
+[application]
+
+config/name="Zenoform Verified Chunks"
+config/description="Visual demonstration of the Zenoform Verifiable Procedural Generation protocol."
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
