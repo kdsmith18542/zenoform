@@ -1,0 +1,9 @@
+target/
+target_alt/
+cairo/terrain_v1/target/
+.git/
+.github/
+**/*.rs.bk
+*.json
+!test_vectors/**/*.json
+plan.md

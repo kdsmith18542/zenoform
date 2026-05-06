@@ -16,6 +16,7 @@ thiserror = "1.0"
 clap = { version = "4.4", features = ["derive"] }
 blake3 = "1.5"
 starknet-crypto = "0.8"
+criterion = "0.5"
 
 [workspace.lints.clippy]
 should_implement_trait = "allow"

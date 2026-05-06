@@ -2,7 +2,7 @@
   "schema_version": "zenoform.chunk.v1",
   "protocol_version": "zenoform-terrain-v1",
   "world_id": "test-world",
-  "seed_hash": "3e7",
+  "seed_hash": "0x4a99e821d389abebcecd792e68ec81ea6e6ef4093e964cd6475bc4586338ac3",
   "chunk_coord": {
     "x": 0,
     "y": -1,
@@ -13,7 +13,7 @@
     "height": 16
   },
   "module_id": "terrain.fixed_noise.v1",
-  "module_hash": "0x-module-hash-placeholder",
+  "module_hash": "0x65e4a3b738394e7c7bd313a36da6227d5ec242f404d8387b3e4f2160d7e69c4",
   "cells": [
     {
       "local_x": 0,
@@ -2320,5 +2320,5 @@
       "resource_mask": 0
     }
   ],
-  "commitment": "0x9fae65843f3533c9f82fc3811717be6c4791b91b1b80a2c4a1baad05936a8e"
+  "commitment": "0x6fc794e6864a90623556ed1dbb3b2178e0f4598033e35ebb06148ca692bf65c"
 }

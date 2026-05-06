@@ -1,7 +1,7 @@
 [
   {
     "cell_count": 256,
-    "commitment": "0x4a556fbf19c1b1c91b14315291cbd74408c182172085a5758e305bcbdf9e086",
+    "commitment": "0x2531db998ff0cd1d0f298461ea62cf872e7a42aae7cd779e1e9a3a685b7a3a0",
     "coord": [
       0,
       0,
@@ -16,7 +16,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x47b326f59ab586e5a80e86e8e6d3aa3a446c2aae29529b49d0d67324540c092",
+    "commitment": "0x55b7419bef86ef972595f368013fbc72d49d7d2a316e0ee165aada43dc84e5c",
     "coord": [
       1,
       0,
@@ -31,7 +31,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x680c6dfab593c738e6699ba5aac63a4c6140f36ae3fe8566107a7c1b617d6b4",
+    "commitment": "0x2b9c2799cb319a657d811aafbfc6e273e2b751c2e0d84d31d3aba75a8e41acb",
     "coord": [
       0,
       1,
@@ -46,7 +46,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x6bc1840d419016f379d22df68c15f2cc0063caff8105ef21fbadb0b9a5b7d7e",
+    "commitment": "0x3f83ba9f26018cf961fc1e613cecb4d75eb2ccd9bb60825b09dd7b4e572dd70",
     "coord": [
       -1,
       0,
@@ -61,7 +61,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x52641c2a7070ad22c4763839e47a9dc9e5980bdfe2f822e5e1a1ed49fac4601",
+    "commitment": "0x5992f043c228c2761d75b59f4b8d8136443326427270b0768a31f75fd22a7b5",
     "coord": [
       0,
       -1,
@@ -76,7 +76,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x17d2c160497fb483bb42eb86b2d7f2b39e76960f05c22062d86d38279f90344",
+    "commitment": "0x50d1b35d7e992bd665cf804204168acf784ebacc3be4287a98887fe4f2e6fae",
     "coord": [
       0,
       0,
@@ -91,7 +91,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x16bfa630454fa9c9046a4a8af1528dc580a36dc30b7a04b2b32a95e080ae8a4",
+    "commitment": "0x2545751f5dffa546baa26a0625c51eb52172dad9f23962d9087f9dbbdb78d29",
     "coord": [
       1,
       0,
@@ -106,7 +106,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x9d6b3f14c6dec4f21680810700c2d156fa343af081e37dfb6773ab4f98a90",
+    "commitment": "0x37cca68b52c010ff0ec3d8d9242e0e8da37b65f4b0efd8bf4578086ff78f14a",
     "coord": [
       0,
       1,
@@ -121,7 +121,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x7c0780b7a0a72cef754467e29cdd1e916e18b2a7831787eace5884a94b0b44a",
+    "commitment": "0x6fd12f61cc0c3c033be50297d94b04403f95ee15d80e8b213292c06ce8c5d83",
     "coord": [
       -1,
       0,
@@ -136,7 +136,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x42fe8aa090a657017aa18232d25a8747d8e929c21b6da7849a17d75f4242186",
+    "commitment": "0x3c2a40669286f38012ebf3a3927b6acaf5b2bcace13ab49213d836cfe600e10",
     "coord": [
       0,
       -1,
@@ -151,7 +151,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x645bb4786da20fd4c9d16207c9e4a1bff8023441046a62807d0609517e2bfc9",
+    "commitment": "0x2a290722e45753ee6bdd7abb831d05fcf089520a8efb94ee46185c985a38a80",
     "coord": [
       0,
       0,
@@ -166,7 +166,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x51a5961443244b2e4ec357a0b1911ba28586b3ca684447fff47d03d02e80a60",
+    "commitment": "0x2f30b2660671ad11485ad8bf9604739e39cf5e2780711855148cf33c8252cb8",
     "coord": [
       1,
       0,
@@ -181,7 +181,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x6ebb11c9a12f97400e47a6915923c13c56837937eb5ce1a030a4a2ce5a2a15a",
+    "commitment": "0x7a6e29fcd4fab5f2875fe38b389d684484fb59c614f86320a6c85d9d949e131",
     "coord": [
       0,
       1,
@@ -196,7 +196,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x298e6cd079a4fbc5bb69e4b3025fd9b3b24fb32b9dfeacb433761e7646cc57f",
+    "commitment": "0x1114e49a625aac4bb182926b23b03fd2382438c654b0061895de1ff9dc6da2d",
     "coord": [
       -1,
       0,
@@ -211,7 +211,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x65337da22d29d5d0a597fe09694e7c88f5d55f5a49b2dd873dd815dba9f3edd",
+    "commitment": "0x1643147ef2c7b9c2f57bcca180daab35679a5ad8deecaed7bb572b5b7a1368e",
     "coord": [
       0,
       -1,
@@ -226,7 +226,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x30a67af29e9acb418e3d437141c8ef8a6db1057f1fe2e8d4e6b312847ce8e07",
+    "commitment": "0xc19b5a2578fe9511fe4d7595110a3c04d647b6af1481914b59499c4086136",
     "coord": [
       0,
       0,
@@ -241,7 +241,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x227dad5b38a00ab9e2d757f0c71696fb51d9a033731046c192ce98cab778f6a",
+    "commitment": "0x6d563236324a978df5de236dd05b9f9cd667f66430b9d10d6e358789db352b7",
     "coord": [
       1,
       0,
@@ -256,7 +256,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x1770d7c1e555074b85308ff8b38cfc2b44387a2c542c2887c35a5d6df6ac039",
+    "commitment": "0x2a34a8d440e07c54fe99509780aaa392afd2a35bbdb8fa60c04e67d5b0fd187",
     "coord": [
       0,
       1,
@@ -271,7 +271,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x62b7703f4f55a452d19d576fad5eec49e25e97e6137e4b9dd870cb1901d43df",
+    "commitment": "0x5409221671751485ed0c21e1cc51e3bebcd431da13cab7d0aa61351e0d1d28c",
     "coord": [
       -1,
       0,
@@ -286,7 +286,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x9fae65843f3533c9f82fc3811717be6c4791b91b1b80a2c4a1baad05936a8e",
+    "commitment": "0x6fc794e6864a90623556ed1dbb3b2178e0f4598033e35ebb06148ca692bf65c",
     "coord": [
       0,
       -1,
@@ -301,7 +301,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x7e964b72a1518ba7447f05d5f4690b4193f687db2bbbd0cc97780cbe42ff2e2",
+    "commitment": "0x4bd59c4406bccdc02312824cfc6eae1e9ee0e43443de262fcf33039aca60c9e",
     "coord": [
       0,
       0,
@@ -316,7 +316,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x3b1b29d53b4309e58fab075d0602ee80dd2a0af1708c6dce50939a249635941",
+    "commitment": "0x268dfbf72c3ee4160e55eceb290a0b9d0be4328af41917a38152ca3ed85cad5",
     "coord": [
       1,
       0,
@@ -331,7 +331,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x25a7fd91bfcc63e7d7511b6042832765a0e265bc25981a7fdea66472b546a9b",
+    "commitment": "0x5c08d6faf39fd94471e833c5c945800455ff6058e4f502012f2923436c125fb",
     "coord": [
       0,
       1,
@@ -346,7 +346,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x427fd49b4469de3e334a0d02a3a9720eee75e45a0378f850cfb9fcddb55bbe8",
+    "commitment": "0x5e2e7e86ebc0e7868c184286d9886ac81e227eb3db8a22e545b31c8392190c5",
     "coord": [
       -1,
       0,
@@ -361,7 +361,7 @@
   },
   {
     "cell_count": 256,
-    "commitment": "0x31bcd6f6e0e8acd053b457e507bb0201fd75d8b089813b32ce8ff192a30c6cd",
+    "commitment": "0x1cc0da4b3cf5ca09ed5eb2f388feda0e7a87d9e9d23faae79d9afe6b36c2ffb",
     "coord": [
       0,
       -1,

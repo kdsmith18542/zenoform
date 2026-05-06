@@ -39,6 +39,9 @@ enum Commands {
         chunk: String,
         #[arg(long)]
         out: String,
+        /// Generate Cairo prover input JSON for use with scarb prove
+        #[arg(long)]
+        generate_prover_inputs: bool,
     },
     /// Verify a chunk against its proof
     Verify {
@@ -125,7 +128,7 @@ fn main() {
             fs::write(out, json).expect("Unable to write file");
             println!("Chunk generated with Poseidon commitment and saved to {}", out);
         }
-        Commands::Prove { chunk, out } => {
+        Commands::Prove { chunk, out, generate_prover_inputs } => {
             let chunk_json = fs::read_to_string(chunk).expect("Unable to read chunk file");
             let chunk_data: Chunk = serde_json::from_str(&chunk_json).expect("Invalid chunk JSON");
 
@@ -149,6 +152,42 @@ fn main() {
             let json = serde_json::to_string_pretty(&proof_package).unwrap();
             fs::write(out, json).expect("Unable to write proof file");
             println!("Mock proof generated and saved to {}", out);
+
+            if *generate_prover_inputs {
+                let prover_input = serde_json::json!({
+                    "input": {
+                        "seed": chunk_data.seed_hash.strip_prefix("0x").unwrap_or(&chunk_data.seed_hash),
+                        "chunk_x": chunk_data.chunk_coord.x.to_string(),
+                        "chunk_y": chunk_data.chunk_coord.y.to_string(),
+                        "width": chunk_data.chunk_size.width.to_string(),
+                        "height": chunk_data.chunk_size.height.to_string(),
+                    },
+                    "expected_commitment": chunk_data.commitment,
+                    "module": "terrain.fixed_noise.v1",
+                    "cells": chunk_data.cells.iter().map(|cell| {
+                        serde_json::json!({
+                            "x": cell.local_x,
+                            "y": cell.local_y,
+                            "height": cell.height,
+                            "temperature": cell.temperature,
+                            "moisture": cell.moisture,
+                            "biome_id": cell.biome_id,
+                            "resource_mask": cell.resource_mask,
+                        })
+                    }).collect::<Vec<_>>(),
+                });
+
+                let prover_input_path = format!("{}_prover_input.json", out.trim_end_matches(".json"));
+                fs::write(&prover_input_path, serde_json::to_string_pretty(&prover_input).unwrap())
+                    .expect("Unable to write prover input file");
+                println!("Cairo prover input generated at {}", prover_input_path);
+                println!();
+                println!("To generate a real STARK proof with Cairo:");
+                println!("  1. cd cairo/terrain_v1");
+                println!("  2. scarb build");
+                println!("  3. scarb cairo-run --available-gas=9999999999");
+                println!("     OR use: scarb prove (when snforge is available)");
+            }
         }
         Commands::Verify { chunk, proof } => {
             let chunk_json = fs::read_to_string(chunk).expect("Unable to read chunk file");
